@@ -22,8 +22,11 @@ class OggConverter {
                 ffmpeg(input)
                     .inputOption("-t 30")
                     .output(outputPath)
-                    .on("end", () => resolve(outputPath))
-                    .on("error", err => reject(err.message))
+                    .on("end", () => {
+                        removeFile(input)
+                        resolve(outputPath)
+                    })
+                    .on("error", (err) => reject(err.message))
                     .run()
             })
         } catch (e) {

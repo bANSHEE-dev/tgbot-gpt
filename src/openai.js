@@ -18,7 +18,7 @@ class OpenAI {
 
     async chat(messages) {
         try {
-        const response= await this.openai.createChatCompletion({
+            const response = await this.openai.createChatCompletion({
                 model: "gpt-3.5-turbo",
                 messages,
             })
